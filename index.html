@@ -129,6 +129,7 @@
       var tools = document.getElementsByClassName('tools');
       var query;
       var base_url = 'https://ccsp.ent.sirsi.net/client/en_US/nbk/search/results/?commit=Search&lm=NORTHBROOK&q={{q}}';
+      var room;
       var search_url;
 
       var get_search_params = function(){
@@ -145,9 +146,26 @@
 
       var modify_base_url = function(){
         switch (search_type){
-          case 'kids':
-            base_url = base_url + '&rm=THE+KIDS+ROOM0%7C%7C%7C1%7C%7C%7C2%7C%7C%7Ctrue'
+          case 'ys':
+            room = '&rm=THE+KIDS+ROOM0%7C%7C%7C1%7C%7C%7C2%7C%7C%7Ctrue';
+
+          case 'fm':
+            room = '&rm=FIND+MOVIES%2C+M0%7C%7C%7C1%7C%7C%7C1%7C%7C%7Ctrue';
+
+          case 'ref':
+            room = '&rm=THE+REFERENCE+0%7C%7C%7C1%7C%7C%7C1%7C%7C%7Ctrue';
+
+          case 'teen':
+            room = '&rm=NORTHBROOK+TEE0%7C%7C%7C1%7C%7C%7C1%7C%7C%7Ctrue';
+
+          case 'fm-reads':
+            room = '&rm=THE+READING+RO0%7C%7C%7C1%7C%7C%7C1%7C%7C%7Ctrue';
+
+          default:
+            room = '';
         }
+
+        base_url = base_url + room;
       }
 
       var init = function(){
