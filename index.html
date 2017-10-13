@@ -145,27 +145,28 @@
       }
 
       var modify_base_url = function(){
-        switch (search_type){
-          case 'ys':
-            room = '&rm=THE+KIDS+ROOM0%7C%7C%7C1%7C%7C%7C2%7C%7C%7Ctrue';
+        if (search_type !== undefined){
+          switch (search_type){
+            case 'ys':
+              room = '&rm=THE+KIDS+ROOM0%7C%7C%7C1%7C%7C%7C2%7C%7C%7Ctrue';
 
-          case 'fm':
-            room = '&rm=FIND+MOVIES%2C+M0%7C%7C%7C1%7C%7C%7C1%7C%7C%7Ctrue';
+            case 'fm':
+              room = '&rm=FIND+MOVIES%2C+M0%7C%7C%7C1%7C%7C%7C1%7C%7C%7Ctrue';
 
-          case 'ref':
-            room = '&rm=THE+REFERENCE+0%7C%7C%7C1%7C%7C%7C1%7C%7C%7Ctrue';
+            case 'ref':
+              room = '&rm=THE+REFERENCE+0%7C%7C%7C1%7C%7C%7C1%7C%7C%7Ctrue';
 
-          case 'teen':
-            room = '&rm=NORTHBROOK+TEE0%7C%7C%7C1%7C%7C%7C1%7C%7C%7Ctrue';
+            case 'teen':
+              room = '&rm=NORTHBROOK+TEE0%7C%7C%7C1%7C%7C%7C1%7C%7C%7Ctrue';
 
-          case 'fm-reads':
-            room = '&rm=THE+READING+RO0%7C%7C%7C1%7C%7C%7C1%7C%7C%7Ctrue';
+            case 'fm-reads':
+              room = '&rm=THE+READING+RO0%7C%7C%7C1%7C%7C%7C1%7C%7C%7Ctrue';
 
-          default:
-            room = '';
+            default:
+              room = '';
+          }
+          base_url = base_url + room;
         }
-
-        base_url = base_url + room;
       }
 
       var init = function(){
