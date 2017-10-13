@@ -5,12 +5,21 @@
   <title>Search | Northbrook Public Library</title>
   <link href="https://fonts.googleapis.com/css?family=Lato:400,900" rel="stylesheet">
   <style>
+    html, body{
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
     body{
-      margin: 6rem auto;
       padding: 0 2rem;
       font-family: 'Lato', sans-serif;
       text-align: center;
     }
+
+    header{
+      margin-top: 10rem;
+    }
+
     header > h1{
       color: #0074A0;
       font-size: 5rem;
@@ -101,8 +110,8 @@
   <main role="main">
     <form id="search-form">
       <div class="form-control inline">
-        <label class="hidden">Enter your search term</label>
-        <input type="text" name="q" id="query" placeholder="Enter your search term...">
+        <label class="hidden">Search for books, movies, more...</label>
+        <input type="text" name="q" id="query" placeholder="Search for books, movies, more...">
         <button type="submit">Search</button>
       </div>
     </form>
