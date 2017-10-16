@@ -186,7 +186,7 @@
 
       search_form.addEventListener('submit', function(e){
         e.preventDefault();
-        gtag('event', 'search', {'event_category': location});
+        gtag('event', 'search', {'event_label': location});
         query = query_input.value;
         search_url = base_url.replace('{{q}}', query);
         window.location.href = search_url;
@@ -196,7 +196,7 @@
 
       for (i = 0; i < tools.length; i++){
         tools[i].addEventListener('click', function(e){
-          gtag('event', 'tool', {'event_category': location})
+          gtag('event', 'tool', {'event_label': location})
         })
       }
 
