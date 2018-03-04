@@ -1,0 +1,15 @@
+Search pages for opac catalog stations for event tracking.
+
+- [lobbycat](locations/lobbycat)
+- [nbk-opac-ref1](locations/nbk-opac-ref1)
+- [nbk-opac-ref2](locations/nbk-opac-ref2)
+- [nbk-opac-mm1](locations/nbk-opac-mm1)
+- [nbk-opac-mm2](locations/nbk-opac-mm2)
+- [nbk-opac-mm3](locations/nbk-opac-mm3)
+- [nbk-opac-rr1](locations/nbk-opac-rr1)
+- [nbk-opac-rr2](locations/nbk-opac-rr2)
+- [nbk-opac-ys2](locations/nbk-opac-ys2)
+- [nbk-opac-ys1](locations/nbk-opac-ys1)
+- [nbk-opac-ysloft](locations/nbk-opac-ysloft)
+- [nbk-opac-bus1](locations/nbk-opac-bus1)
+- [nbk-opac-nonfiction](locations/nbk-opac-nonfiction)

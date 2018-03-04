@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108072853-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-108072853-1');
+  </script>
   <meta charset="utf-8">
   <title>Search | Northbrook Public Library</title>
   <link href="https://fonts.googleapis.com/css?family=Lato:400,900" rel="stylesheet">
@@ -117,86 +126,48 @@
     </form>
   </main>
   <footer role="contentinfo">
-    <img src="logo.png" class="logo">
+    <img src="../logo.png" class="logo">
   </footer>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108072853-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-108072853-1');
-  </script>
   <script>
     (function(){
-      var url_params;
-      var search_type;
-      var location;
       var search_form = document.getElementById('search-form');
       var query_input = document.getElementById('query');
-      var tools = document.getElementsByClassName('tools');
       var query;
-      var base_url = 'https://ccsp.ent.sirsi.net/client/en_US/nbk/search/results/?commit=Search&lm=NORTHBROOK&q={{q}}';
-      var room;
       var search_url;
 
-      var get_search_params = function(){
-        url_params = window.location.search.split('&');
-        for (i = 0; i < url_params.length; i++){
-          if (url_params[i].search('l=') !== -1){
-            location = url_params[i].split('=')[1];
-          }
-          else if (url_params[i].search('st=') !== -1) {
-            search_type = url_params[i].split('=')[1];
-          }
-        }
-      }
+      {% case page.room %}
 
-      var modify_base_url = function(){
-        if (search_type !== undefined){
-          switch (search_type){
-            case 'ys':
-              room = '&rm=THE+KIDS+ROOM0%7C%7C%7C1%7C%7C%7C2%7C%7C%7Ctrue';
+        {% when 'ys' %}
+          var base_url = 'https://ccsp.ent.sirsi.net/client/en_US/nbk/search/results/?commit=Search&lm=NORTHBROOK&rm=THE+KIDS+ROOM0%7C%7C%7C1%7C%7C%7C2%7C%7C%7Ctrue&q={q}';
 
-            case 'fm':
-              room = '&rm=FIND+MOVIES%2C+M0%7C%7C%7C1%7C%7C%7C1%7C%7C%7Ctrue';
+        {% when 'fm' %}
+          var base_url = 'https://ccsp.ent.sirsi.net/client/en_US/nbk/search/results/?commit=Search&lm=NORTHBROOK&rm=FIND+MOVIES%2C+M0%7C%7C%7C1%7C%7C%7C1%7C%7C%7Ctrue&q={q}';
 
-            case 'ref':
-              room = '&rm=THE+REFERENCE+0%7C%7C%7C1%7C%7C%7C1%7C%7C%7Ctrue';
+        {% when 'fm-reads' %}
+          var base_url = 'https://ccsp.ent.sirsi.net/client/en_US/nbk/search/results/?commit=Search&lm=NORTHBROOK&rm=THE+READING+RO0%7C%7C%7C1%7C%7C%7C1%7C%7C%7Ctrue&q={q}';
 
-            case 'teen':
-              room = '&rm=NORTHBROOK+TEE0%7C%7C%7C1%7C%7C%7C1%7C%7C%7Ctrue';
+        {% when 'ref' %}
+        var base_url = 'https://ccsp.ent.sirsi.net/client/en_US/nbk/search/results/?commit=Search&lm=NORTHBROOK&rm=THE+REFERENCE+0%7C%7C%7C1%7C%7C%7C1%7C%7C%7Ctrue&q={q}';
 
-            case 'fm-reads':
-              room = '&rm=THE+READING+RO0%7C%7C%7C1%7C%7C%7C1%7C%7C%7Ctrue';
+        {% when 'teen' %}
+        var base_url = 'https://ccsp.ent.sirsi.net/client/en_US/nbk/search/results/?commit=Search&lm=NORTHBROOK&rm=NORTHBROOK+TEE0%7C%7C%7C1%7C%7C%7C1%7C%7C%7Ctrue&q={q}';
 
-            default:
-              room = '';
-          }
-          base_url = base_url + room;
-        }
-      }
+        {% else %}
+        var base_url = 'https://ccsp.ent.sirsi.net/client/en_US/nbk/search/results/?commit=Search&lm=NORTHBROOK&q={q}';
+
+
+      {% endcase %}
 
       var init = function(){
         query_input.focus();
-        get_search_params();
-        modify_base_url();
-      }
+        search_form.addEventListener('submit', function(e){
+          e.preventDefault();
+          gtag('event', 'search', {'event_label': '{{ page.title }}'});
+          query = query_input.value;
+          search_url = base_url.replace('{q}', query);
+          window.location.href = search_url;
 
-      search_form.addEventListener('submit', function(e){
-        e.preventDefault();
-        gtag('event', 'search', {'event_label': location});
-        query = query_input.value;
-        search_url = base_url.replace('{{q}}', query);
-        window.location.href = search_url;
-
-        return false;
-      })
-
-      for (i = 0; i < tools.length; i++){
-        tools[i].addEventListener('click', function(e){
-          gtag('event', 'tool', {'event_label': location})
+          return false;
         })
       }
 
