@@ -112,8 +112,8 @@
   <header role="banner">
     <h1>What are you looking for?</h1>
     <ul class="tools">
-      <li><a href="https://www.northbrook.info/my-account" class="tool" data-label="Account">Account</a></li>
-      <li><a href="http://ccsp.ent.sirsi.net/client/en_US/nbk/" class="tool" data-label="Catalog">Catalog</a></li>
+      <li><a href="https://ccs.polarislibrary.com/polaris/logon.aspx?header=1" class="tool" data-label="Account">Account</a></li>
+      <li><a href="https://ccs.polarislibrary.com/polaris/default.aspx?ctx=47.1033.0.0.1" class="tool" data-label="Catalog">Catalog</a></li>
     </ul>
   </header>
   <main role="main">
@@ -138,23 +138,22 @@
       {% case page.room %}
 
         {% when 'ys' %}
-          var base_url = 'https://ccsp.ent.sirsi.net/client/en_US/nbk/search/results/?commit=Search&lm=NORTHBROOK&rm=THE+KIDS+ROOM0%7C%7C%7C1%7C%7C%7C2%7C%7C%7Ctrue&q={q}';
+          var base_url = 'https://ccs.polarislibrary.com/polaris/search/searchresults.aspx?ctx=47.1033.0.0.48&term={q}';
 
         {% when 'fm' %}
-          var base_url = 'https://ccsp.ent.sirsi.net/client/en_US/nbk/search/results/?commit=Search&lm=NORTHBROOK&rm=FIND+MOVIES%2C+M0%7C%7C%7C1%7C%7C%7C1%7C%7C%7Ctrue&q={q}';
+          var base_url = 'https://ccs.polarislibrary.com/polaris/search/searchresults.aspx?ctx=47.1033.0.0.48&term={q}';
 
         {% when 'fm-reads' %}
-          var base_url = 'https://ccsp.ent.sirsi.net/client/en_US/nbk/search/results/?commit=Search&lm=NORTHBROOK&rm=THE+READING+RO0%7C%7C%7C1%7C%7C%7C1%7C%7C%7Ctrue&q={q}';
+          var base_url = 'https://ccs.polarislibrary.com/polaris/search/searchresults.aspx?ctx=47.1033.0.0.48&term={q}';
 
         {% when 'ref' %}
-        var base_url = 'https://ccsp.ent.sirsi.net/client/en_US/nbk/search/results/?commit=Search&lm=NORTHBROOK&rm=THE+REFERENCE+0%7C%7C%7C1%7C%7C%7C1%7C%7C%7Ctrue&q={q}';
+          var base_url = 'https://ccs.polarislibrary.com/polaris/search/searchresults.aspx?ctx=47.1033.0.0.48&term={q}';
 
         {% when 'teen' %}
-        var base_url = 'https://ccsp.ent.sirsi.net/client/en_US/nbk/search/results/?commit=Search&lm=NORTHBROOK&rm=NORTHBROOK+TEE0%7C%7C%7C1%7C%7C%7C1%7C%7C%7Ctrue&q={q}';
+          var base_url = 'https://ccs.polarislibrary.com/polaris/search/searchresults.aspx?ctx=47.1033.0.0.48&term={q}';
 
         {% else %}
-        var base_url = 'https://ccsp.ent.sirsi.net/client/en_US/nbk/search/results/?commit=Search&lm=NORTHBROOK&q={q}';
-
+          var base_url = 'https://ccs.polarislibrary.com/polaris/search/searchresults.aspx?ctx=47.1033.0.0.48&term={q}';
 
       {% endcase %}
 
