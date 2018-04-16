@@ -56,6 +56,7 @@
     input[type=text]{
       width: 80%;
       border: 1px solid #aaa;
+      font-style: italic;
     }
 
     button{
@@ -163,7 +164,7 @@
           e.preventDefault();
           gtag('event', 'search', {'event_label': '{{ page.title }}'});
           query = query_input.value;
-          search_url = base_url.replace('{q}', query);
+          search_url = base_url.replace('{q}', encodeURI(query));
           window.location.href = search_url;
 
           return false;
